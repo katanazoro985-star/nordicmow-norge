@@ -33,6 +33,7 @@ const PRODUCTS = [
     badge: 'Beste for rekkehus',
     badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
     colorHex: '#10B981',
+    image: 'images/mower-1.jpg',
     description: 'En smidig og ekstremt stillegående robotklipper tilpasset mindre gressplener opptil 500 m². Utstyrt med nattklipp-modus og automatisk regnsensor som sikrer feilfritt klipperesultat i all slags norsk sommervær.',
     features: [
       'Ultrastillegående børsteløs motor (55 dB)',
@@ -65,6 +66,7 @@ const PRODUCTS = [
     badge: '4x4 Klatremester',
     badgeColor: 'bg-amber-100 text-amber-900 border-amber-300',
     colorHex: '#F59E0B',
+    image: 'images/mower-2.jpg',
     description: 'Utviklet spesielt for kupert norsk vestland- og fjellandskap. Med individuell 4x4-hjulsdrift forserer FjordTrim Alpine stigninger på inntil 75% (38°) uten å skli. Helt uten behov for kantledning!',
     features: [
       'Ekte All-Wheel Drive (AWD) klatresystem',
@@ -97,6 +99,7 @@ const PRODUCTS = [
     badge: 'Mest stillegående',
     badgeColor: 'bg-sky-100 text-sky-800 border-sky-300',
     colorHex: '#0284C7',
+    image: 'images/mower-3.jpg',
     description: 'SylvaBot Stealth 800 skanner plenen med militærklasse 3D-LiDAR 30 ganger i sekundet. Den unngår automatisk leker, hagemøbler, pinnsvin og kjæledyr – millimeterpresisjon uten behov for kabler.',
     features: [
       '3D LiDAR navigasjon som fungerer like godt i mørket',
@@ -129,6 +132,7 @@ const PRODUCTS = [
     badge: 'Bestselger 2026',
     badgeColor: 'bg-emerald-600 text-white border-emerald-700',
     colorHex: '#059669',
+    image: 'images/mower-4.jpg',
     description: 'Norges mest populære robotklipper i premiumklassen. Kombinerer satellitt-RTK med doble AI-kameraer som gjør at den aldri mister signalet, selv under store furutrær eller nær høye vegger.',
     features: [
       'Dobbelt kamerasystem med aktiv nattsyn-belysning',
@@ -161,6 +165,7 @@ const PRODUCTS = [
     badge: 'Mest energieffektiv',
     badgeColor: 'bg-teal-100 text-teal-800 border-teal-300',
     colorHex: '#0D9488',
+    image: 'images/mower-5.jpg',
     description: 'En økonomisk og miljøvennlig klipper med avansert mikrogjødslingsteknologi. Finhakker gresset til naturlig næring for plenen, reduserer mose og holder plenen dypgrønn gjennom hele sesongen.',
     features: [
       'Optimalisert lavforbruk-motor (kun 8 kWh per måned)',
@@ -193,6 +198,7 @@ const PRODUCTS = [
     badge: 'Proffens Valg',
     badgeColor: 'bg-purple-100 text-purple-900 border-purple-300',
     colorHex: '#7C3AED',
+    image: 'images/mower-6.jpg',
     description: 'Apex 1500 Pro er bygget for finskårne plener med høye krav. Den patenterte Cut-To-Edge teknologien klipper helt inntil murer og bedkanter, så du slipper å bruke kanttrimmer manuelt.',
     features: [
       'Cut-To-Edge sidesentrert klippesystem',
@@ -225,6 +231,7 @@ const PRODUCTS = [
     badge: 'Ekstrem Kapasitet',
     badgeColor: 'bg-slate-900 text-emerald-400 border-slate-700',
     colorHex: '#1E293B',
+    image: 'images/mower-7.jpg',
     description: 'Et kraftverk av en robotklipper for herregårder, bedriftsområder og store hageanlegg. Med 32 cm dobbel klippeskive og kraftige børsteløse motorer klipper den inntil 3 000 m² på rekordtid.',
     features: [
       'Dobbelt klippeaggregat på 32 cm',
@@ -257,6 +264,7 @@ const PRODUCTS = [
     badge: 'Beste Pris',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-300',
     colorHex: '#2563EB',
+    image: 'images/mower-8.jpg',
     description: 'Enkel, pålitelig og rimelig kvalitetsklipper for deg som bare vil ha en velstelt plen uten kompliserte innstillinger. Pakk ut, koble til, og la PolarGlide gjøre jobben.',
     features: [
       'Ett-trykks hurtigstart på klipperen',
@@ -289,6 +297,7 @@ const PRODUCTS = [
     badge: 'Trygg for kjæledyr',
     badgeColor: 'bg-rose-100 text-rose-900 border-rose-300',
     colorHex: '#E11D48',
+    image: 'images/mower-9.jpg',
     description: 'AuroraView 1000 er utstyrt med en nevral AI-prosessor trent på over 200 000 hageobjekter. Den gjenkjenner og svinger trygt unna leker, hageslanger, hunder, katter og sovende pinnsvin.',
     features: [
       'Sanntids AI-klassifisering av hindringer',
@@ -321,6 +330,7 @@ const PRODUCTS = [
     badge: 'Bygget for Norge',
     badgeColor: 'bg-emerald-800 text-emerald-100 border-emerald-600',
     colorHex: '#064E3B',
+    image: 'images/mower-10.jpg',
     description: 'Spesialkonstruert for å mestre vått norsk gress som tetter vanlige klippere. Med rustfrie komponenter, flytende klippedekk og ekstra dreiemoment takler Fjell 2200 grovt gress og ujevn torv med glans.',
     features: [
       'Selvrensende klippedekk som hindrer oppsamling av vått gress',
@@ -352,104 +362,32 @@ const state = {
   lang: 'no' // 'no' or 'en'
 };
 
-// 3. SVG GENERATOR FOR ROBOT LAWN MOWERS
-// Generates sleek, futuristic, high-tech robot lawn mower illustrations
+// 3. VISUAL RENDERER FOR ROBOT LAWN MOWERS (REAL PRODUCT PHOTOS)
 function renderMowerSVG(product, isDetail = false) {
-  const size = isDetail ? 'w-full h-72' : 'w-full h-48';
+  const heightClass = isDetail ? 'h-72' : 'h-52';
   return `
-    <div class="${size} flex items-center justify-center p-4 relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950 rounded-xl">
-      <!-- Ambient Glow Behind Mower -->
-      <div class="absolute inset-0 bg-radial from-emerald-500/20 via-transparent to-transparent opacity-60"></div>
+    <div class="w-full ${heightClass} relative overflow-hidden bg-slate-900 rounded-xl group/photo">
+      <!-- Real High-Resolution Product Photo -->
+      <img 
+        src="${product.image}" 
+        alt="${product.name}" 
+        class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover/photo:scale-108"
+        loading="lazy"
+        onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1558904541-efa8c4a08931?auto=format&fit=crop&w=800&q=80';"
+      />
       
-      <!-- Tech Grid Lines -->
-      <svg class="absolute inset-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="grid-${product.id}" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#10B981" stroke-width="0.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid-${product.id})" />
-      </svg>
-
-      <!-- Sleek Robot Mower Vector -->
-      <svg viewBox="0 0 400 240" class="w-full h-full max-h-56 filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-105" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="bodyGrad-${product.id}" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#1E293B"/>
-            <stop offset="50%" stop-color="#0F172A"/>
-            <stop offset="100%" stop-color="#020617"/>
-          </linearGradient>
-          <linearGradient id="accentGrad-${product.id}" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="${product.colorHex}"/>
-            <stop offset="100%" stop-color="#34D399"/>
-          </linearGradient>
-          <linearGradient id="wheelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#334155"/>
-            <stop offset="100%" stop-color="#0F172A"/>
-          </linearGradient>
-          <filter id="glow-${product.id}" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-          </filter>
-        </defs>
-
-        <!-- Shadow on Grass -->
-        <ellipse cx="200" cy="205" rx="145" ry="18" fill="#000000" opacity="0.45"/>
-
-        <!-- Rear Wheels (Large All-Terrain) -->
-        <g id="wheels">
-          <!-- Left Rear Wheel -->
-          <rect x="75" y="115" width="34" height="75" rx="10" fill="url(#wheelGrad)" stroke="#475569" stroke-width="2"/>
-          <line x1="75" y1="135" x2="109" y2="135" stroke="#1E293B" stroke-width="3"/>
-          <line x1="75" y1="155" x2="109" y2="155" stroke="#1E293B" stroke-width="3"/>
-          <line x1="75" y1="175" x2="109" y2="175" stroke="#1E293B" stroke-width="3"/>
-
-          <!-- Right Rear Wheel -->
-          <rect x="290" y="115" width="34" height="75" rx="10" fill="url(#wheelGrad)" stroke="#475569" stroke-width="2"/>
-          <line x1="290" y1="135" x2="324" y2="135" stroke="#1E293B" stroke-width="3"/>
-          <line x1="290" y1="155" x2="324" y2="155" stroke="#1E293B" stroke-width="3"/>
-          <line x1="290" y1="175" x2="324" y2="175" stroke="#1E293B" stroke-width="3"/>
-        </g>
-
-        <!-- Main Aerodynamic Body Chassis -->
-        <path d="M 105 165 C 100 120, 130 75, 175 68 L 225 68 C 270 75, 300 120, 295 165 C 290 185, 260 195, 200 195 C 140 195, 110 185, 105 165 Z" fill="url(#bodyGrad-${product.id})" stroke="#334155" stroke-width="2.5"/>
-
-        <!-- Top Hood Aero Wing -->
-        <path d="M 140 100 C 160 85, 240 85, 260 100 L 250 145 C 230 155, 170 155, 150 145 Z" fill="#0B132B" stroke="${product.colorHex}" stroke-width="1.5"/>
-
-        <!-- Dynamic Accent Racing Stripes -->
-        <path d="M 125 140 Q 200 125 275 140" fill="none" stroke="url(#accentGrad-${product.id})" stroke-width="4" stroke-linecap="round" filter="url(#glow-${product.id})"/>
-        
-        <!-- LiDAR / Vision Dome on Top -->
-        <ellipse cx="200" cy="80" rx="18" ry="10" fill="#020617" stroke="#475569" stroke-width="1.5"/>
-        <circle cx="200" cy="78" r="4" fill="#38BDF8" filter="url(#glow-${product.id})"/>
-
-        <!-- Front Ultrasonic & AI Optical Camera Bar -->
-        <rect x="170" y="170" width="60" height="10" rx="5" fill="#020617" stroke="#334155" stroke-width="1"/>
-        <circle cx="180" cy="175" r="2.5" fill="#10B981"/>
-        <circle cx="200" cy="175" r="2" fill="#EF4444"/>
-        <circle cx="220" cy="175" r="2.5" fill="#10B981"/>
-
-        <!-- Headlight LED Bars (Nordic Night Vision) -->
-        <path d="M 130 170 L 155 174" stroke="#A7F3D0" stroke-width="3" stroke-linecap="round" filter="url(#glow-${product.id})"/>
-        <path d="M 270 170 L 245 174" stroke="#A7F3D0" stroke-width="3" stroke-linecap="round" filter="url(#glow-${product.id})"/>
-
-        <!-- Power / Status Indicator -->
-        <circle cx="200" cy="115" r="3" fill="#10B981" class="pulse-dot"/>
-
-        <!-- Model Subtitle Tag on Body -->
-        <text x="200" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#94A3B8" text-anchor="middle" letter-spacing="1.5">AUTONOMOUS</text>
-      </svg>
+      <!-- Subtle Dark Vignette & Tech Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent pointer-events-none"></div>
 
       <!-- Badge Overlay Top Left -->
-      <div class="absolute top-3 left-3">
-        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${product.badgeColor} border shadow-sm">
+      <div class="absolute top-3 left-3 z-10">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${product.badgeColor} border shadow-md backdrop-blur-md">
           ${product.badge}
         </span>
       </div>
 
       <!-- Quick Delivery Pill Top Right -->
-      <div class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-full px-2.5 py-0.5 text-[11px] font-medium text-emerald-400 flex items-center gap-1.5">
+      <div class="absolute top-3 right-3 z-10 bg-slate-950/85 backdrop-blur-md border border-slate-700/80 rounded-full px-2.5 py-0.5 text-[11px] font-medium text-emerald-400 flex items-center gap-1.5 shadow-md">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
         2–4 dg
       </div>
