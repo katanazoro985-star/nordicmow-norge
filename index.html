@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NordicMow Norge | Helautomatiske Robotgressklippere for Norske Forhold</title>
+  <meta name="description" content="Oppdag 10 premium helautomatiske robotgressklippere tilpasset norsk klima, bratte bakker og kablefri RTK-satellittnavigasjon. Standard levering 2–4 dager med Posten/Bring.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            nordic: {
+              950: '#07130F',
+              900: '#0B1E16',
+              800: '#0F382A',
+              700: '#18523D',
+              600: '#1E6B50',
+              500: '#10B981',
+              400: '#34D399',
+              100: '#D1FAE5',
+              50: '#ECFDF5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#F8FAF9] text-slate-900 antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- 1. TOP NORDIC TRUST BANNER -->
+  <div class="trust-bar py-2 px-4 border-b border-emerald-950/40">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs gap-2">
+      <div class="flex items-center gap-3">
+        <span class="badge-flag">🇳🇴 NORSK NETTBUTIKK</span>
+        <span class="hidden md:inline text-slate-300">Autonom plenklipping levert direkte fra lager i Oslo</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-1.5 text-emerald-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Standard levering: 2–4 virkedager (Posten/Bring)
+        </span>
+        <span class="hidden sm:inline text-slate-300">Fri frakt over 10 000 kr</span>
+        <span class="text-emerald-400 font-semibold">3 års full garanti</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN NAVIGATION -->
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-nordic-900 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-black text-xl shadow-md group-hover:scale-105 transition-transform">
+          ⚡
+        </div>
+        <div>
+          <span class="font-display font-black text-xl tracking-tight text-slate-900 block leading-tight">
+            NORDIC<span class="text-emerald-600">MOW</span>
+          </span>
+          <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold block">NORGE AS • ROBOTIKK</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-700">
+        <a href="#modeller" class="hover:text-emerald-600 transition-colors">Våre 10 Modeller</a>
+        <a href="#advisor" class="hover:text-emerald-600 transition-colors">Plen-kalkulator</a>
+        <a href="#fordeler" class="hover:text-emerald-600 transition-colors">Hvorfor kablefri?</a>
+        <a href="#anmeldelser" class="hover:text-emerald-600 transition-colors">Kundeomtaler</a>
+        <a href="#faq" class="hover:text-emerald-600 transition-colors">Ofte stilte spørsmål</a>
+        <a href="#kontakt" class="hover:text-emerald-600 transition-colors">Kontakt oss</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Currency Pill -->
+        <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-full text-xs font-bold text-slate-700 border border-slate-200">
+          <span>🇳🇴</span>
+          <span>NOK (kr)</span>
+        </div>
+
+        <!-- Cart Button -->
+        <button onclick="toggleCart()" class="relative p-2.5 rounded-xl bg-nordic-900 hover:bg-nordic-800 text-white transition-all shadow-md flex items-center gap-2 group">
+          <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          <span class="hidden sm:inline text-xs font-bold pr-1">Handlekurv</span>
+          <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 bg-emerald-500 text-slate-950 text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+            0
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. HERO SECTION -->
+  <section class="hero-gradient text-white pt-16 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+            2026-Generasjon Kablefri Robotklipping
+          </div>
+
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-white">
+            Perfekt klippet plen. <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200">
+              Uten kabler. Uten stress.
+            </span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
+            Utviklet for krevende norsk topografi: bratte skråninger opptil 75% stigning, vått kystgress og regnvær. Velg blant <strong>10 uavhengige modeller</strong> med centimeters RTK-satellittpresisjon og smart app-styring.
+          </p>
+
+          <!-- Key Highlights Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 backdrop-blur-sm">
+              <div class="text-emerald-400 font-bold text-lg">100% Kablefri</div>
+              <div class="text-xs text-slate-400">RTK GPS & AI-kamera</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 backdrop-blur-sm">
+              <div class="text-emerald-400 font-bold text-lg">Inntil 75% Helling</div>
+              <div class="text-xs text-slate-400">Ekte 4x4 AWD modeller</div>
+            </div>
+            <div class="col-span-2 sm:col-span-1 p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 backdrop-blur-sm">
+              <div class="text-emerald-400 font-bold text-lg">2–4 Virkedager</div>
+              <div class="text-xs text-slate-400">Posten/Bring fra Oslo</div>
+            </div>
+          </div>
+
+          <!-- Hero CTAs -->
+          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <a href="#modeller" class="btn-accent px-8 py-4 text-sm font-bold text-center">
+              Se alle 10 modeller →
+            </a>
+            <a href="#advisor" class="px-8 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-white font-semibold text-sm text-center border border-slate-600 transition-all flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+              Finn klipperen for din tomt
+            </a>
+          </div>
+
+          <!-- Review Stars -->
+          <div class="pt-4 flex items-center gap-4 text-xs text-slate-400">
+            <div class="flex text-amber-400 text-sm">★★★★★</div>
+            <span><strong>4.9 / 5</strong> basert på over 600 norske hageeiere</span>
+          </div>
+        </div>
+
+        <!-- Hero Graphic Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative bg-gradient-to-b from-emerald-900/30 to-slate-900/90 border border-emerald-500/30 rounded-3xl p-6 shadow-2xl backdrop-blur-xl">
+            <!-- Top tag -->
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Flagskip 2026</span>
+              <span class="bg-emerald-500/20 text-emerald-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-500/40">
+                Posten/Bring Standard Levering
+              </span>
+            </div>
+
+            <!-- Vector Graphic of Robotic Mower -->
+            <div class="py-4">
+              <div class="relative flex items-center justify-center">
+                <svg viewBox="0 0 400 240" class="w-full max-h-60 filter drop-shadow-[0_20px_35px_rgba(16,185,129,0.3)]">
+                  <ellipse cx="200" cy="200" rx="150" ry="16" fill="#000000" opacity="0.6"/>
+                  <!-- All Terrain Wheels -->
+                  <rect x="70" y="110" width="36" height="80" rx="12" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+                  <rect x="294" y="110" width="36" height="80" rx="12" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+                  <!-- Chassis -->
+                  <path d="M 100 160 C 95 110, 130 65, 180 60 L 220 60 C 270 65, 305 110, 300 160 C 295 185, 260 195, 200 195 C 140 195, 105 185, 100 160 Z" fill="#0F172A" stroke="#10B981" stroke-width="2.5"/>
+                  <path d="M 140 95 C 160 80, 240 80, 260 95 L 248 140 C 230 150, 170 150, 152 140 Z" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+                  <!-- Lidar Dome -->
+                  <ellipse cx="200" cy="72" rx="18" ry="9" fill="#090D16" stroke="#10B981" stroke-width="1.5"/>
+                  <circle cx="200" cy="70" r="4" fill="#38BDF8"/>
+                  <!-- Glowing LED lightbar -->
+                  <path d="M 125 165 L 160 170" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M 275 165 L 240 170" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+                  <!-- Center logo -->
+                  <text x="200" y="125" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="#E2E8F0" text-anchor="middle" letter-spacing="2">NORDIC AI</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Quick Specs bar -->
+            <div class="mt-4 pt-4 border-t border-slate-800 grid grid-cols-3 gap-2 text-center text-xs">
+              <div>
+                <span class="text-slate-400 block text-[10px]">Kapasitet</span>
+                <span class="font-bold text-white text-sm">Opptil 3000 m²</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">Stigning</span>
+                <span class="font-bold text-emerald-400 text-sm">75% (38°) AWD</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">Lydnivå</span>
+                <span class="font-bold text-white text-sm">53 dB Stille</span>
+              </div>
+            </div>
+
+            <div class="mt-4 p-3 bg-emerald-950/60 rounded-xl border border-emerald-500/20 flex items-center justify-between text-xs">
+              <span class="text-slate-300">Priser fra kun <strong>5 830 kr</strong> inkl. mva</span>
+              <a href="#modeller" class="text-emerald-400 font-bold hover:underline">Se utvalget →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. LAWN ADVISOR / QUIZ SECTION -->
+  <section id="advisor" class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-200">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full uppercase tracking-wider">
+          Intelligent Hage-Veileder
+        </span>
+        <h2 class="font-display font-black text-2xl sm:text-3xl text-slate-900 mt-3 mb-2">
+          Hvilken robotklipper passer din tomt?
+        </h2>
+        <p class="text-sm text-slate-500">
+          Svar på 3 enkle spørsmål, så finner vår algoritme den ideelle modellen for ditt plenareal og terreng.
+        </p>
+      </div>
+
+      <div class="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <!-- Question 1 -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              1. Hvor stor er plenen?
+            </label>
+            <select id="advisor-size" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <option value="500">Liten hage (opptil 500 m²)</option>
+              <option value="800">Mellomstor (500 – 800 m²)</option>
+              <option value="1200" selected>Vanlig enebolig (800 – 1 200 m²)</option>
+              <option value="1800">Stor tomt (1 200 – 1 800 m²)</option>
+              <option value="3000">Kjempetomt / Borettslag (over 1 800 m²)</option>
+            </select>
+          </div>
+
+          <!-- Question 2 -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              2. Har du bratte bakker?
+            </label>
+            <select id="advisor-slope" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <option value="30">Stort sett flat tomt (under 30%)</option>
+              <option value="45" selected>Moderat helling (30% – 45%)</option>
+              <option value="60">Veldig bratt tomt (45% – 60%)</option>
+              <option value="75">Ekstrem vestlandsskråning (opptil 75% AWD)</option>
+            </select>
+          </div>
+
+          <!-- Question 3 -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              3. Vil du unngå kantkabel?
+            </label>
+            <select id="advisor-wire" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <option value="yes" selected>Ja, 100% kablefri (RTK/LiDAR)</option>
+              <option value="no">Spiller ingen rolle (grensekabel er ok)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button onclick="runLawnAdvisor()" class="btn-primary px-8 py-3.5 text-sm font-bold shadow-md">
+            Vis beste anbefaling for min tomt
+          </button>
+        </div>
+
+        <div id="advisor-result" class="mt-6"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PRODUCTS SECTION - 10 ROBOT LAWN MOWERS -->
+  <section id="modeller" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+          Norsk Utvalg 2026
+        </span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-900 mt-2">
+          Våre 10 Helautomatiske Robotklippere
+        </h2>
+        <p class="text-sm text-slate-500 mt-1">
+          Alle modeller sendes med standard frakt (2–4 virkedager) via Posten/Bring fra vårt lager i Oslo.
+        </p>
+      </div>
+      <div id="results-count" class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg self-start md:self-auto">
+        10 av 10 modeller
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm mb-8 space-y-4">
+      <!-- Search & Sort Row -->
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+        <!-- Search Field -->
+        <div class="sm:col-span-8 relative">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0118 0z"></path></svg>
+          <input type="text" id="search-input" placeholder="Søk på modellnavn, funksjoner (f.eks. 4x4, RTK, stillegående)..." class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-xs font-medium text-slate-800 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <!-- Sort Select -->
+        <div class="sm:col-span-4">
+          <select id="sort-select" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-700 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            <option value="featured">Sorter: Anbefalt / Bestselgere</option>
+            <option value="price-asc">Pris: Lav til Høy</option>
+            <option value="price-desc">Pris: Høy til Lav</option>
+            <option value="area-desc">Plenareal: Størst kapasitet først</option>
+            <option value="slope-desc">Klatreevne: Bratteste bakker først</option>
+            <option value="rating">Høyeste vurdering</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quick Category Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100">
+        <span class="text-xs font-bold text-slate-500 mr-1">Kategori:</span>
+        <button onclick="setFilter('all')" data-filter="all" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-800 text-white transition-all">
+          Alle (10)
+        </button>
+        <button onclick="setFilter('small')" data-filter="small" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+          Byhage / Rekkehus (&lt;800 m²)
+        </button>
+        <button onclick="setFilter('medium')" data-filter="medium" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+          Enebolig (800–1500 m²)
+        </button>
+        <button onclick="setFilter('large')" data-filter="large" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+          Store tomter (&gt;1500 m²)
+        </button>
+        <button onclick="setFilter('4x4')" data-filter="4x4" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+          4x4 Klatrere (AWD)
+        </button>
+        <button onclick="setFilter('wirefree')" data-filter="wirefree" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-all">
+          100% Kablefri (RTK/LiDAR)
+        </button>
+      </div>
+
+      <!-- Lawn Area Range Slider -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2 text-xs gap-3">
+        <div class="flex items-center gap-3 flex-1 max-w-md">
+          <span class="text-slate-500 font-medium whitespace-nowrap">Plenareal filter:</span>
+          <input type="range" id="area-slider" min="450" max="3500" step="50" value="3500" class="w-full accent-emerald-600 cursor-pointer">
+          <span id="area-val" class="font-bold text-slate-900 whitespace-nowrap bg-slate-100 px-2 py-0.5 rounded">Alle (3500 m²)</span>
+        </div>
+        <button onclick="resetFilters()" class="text-emerald-700 hover:text-emerald-800 text-xs font-bold underline self-end sm:self-auto">
+          Nullstill filtre
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Grid (10 Products injected via app.js) -->
+    <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <!-- Injected by JavaScript -->
+    </div>
+  </section>
+
+  <!-- 6. WHY CHOOSE US / SCANDINAVIAN QUALITY -->
+  <section id="fordeler" class="py-20 bg-nordic-950 text-white px-4 sm:px-6 lg:px-8 border-t border-b border-emerald-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full uppercase tracking-wider">
+          Konstruert for Norsk Klima
+        </span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl text-white mt-3 mb-4">
+          Hvorfor velge NordicMow for din norske hage?
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Mange utenlandske robotklippere sliter i bratte vestlandsbakker og med vått, klissete gress. Våre modeller er spesialtilpasset det barske nordiske klimaet.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Feature 1 -->
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl mb-4">
+            🌧️
+          </div>
+          <h3 class="font-bold text-lg text-white mb-2">Tåler Norsk Regnvær</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            IPX5 og IPX6 vanntetthet med smarte regnsensorer. Klipperen tar pause i kraftige skybrudd og gjenopptar arbeidet når plenen tørker.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl mb-4">
+            🛰️
+          </div>
+          <h3 class="font-bold text-lg text-white mb-2">100% Uten Kantkabel</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Slutt på avkuttede kabler når du lufter eller graver i plenen. Våre RTK- og LiDAR-modeller kartlegger tomten med centimeters nøyaktighet via satellitt.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl mb-4">
+            🏔️
+          </div>
+          <h3 class="font-bold text-lg text-white mb-2">AWD 4x4 Klatreevne</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Opptil 75% stigningsevne (38 grader). Dype knastedekk og uavhengig firehjulstrekk forhindrer hjulspinn og slitasje på gresset i skråninger.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl mb-4">
+            🇳🇴
+          </div>
+          <h3 class="font-bold text-lg text-white mb-2">Norsk Lager & Garanti</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Rask standardlevering (2–4 dager) med Posten/Bring direkte fra Oslo. 3 års full garanti, norsk kundeservice og tilgang på originale reservedeler.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CUSTOMER REVIEWS (NORWAY VERIFIED) -->
+  <section id="anmeldelser" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full uppercase tracking-wider">
+        Verifiserte Kunder i Norge
+      </span>
+      <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-900 mt-2">
+        Hva sier norske hageeiere?
+      </h2>
+      <p class="text-sm text-slate-500 mt-1">
+        Fra flate villahager på Østlandet til bratte skråninger på Vestlandet.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Review 1 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
+          <p class="text-xs text-slate-700 leading-relaxed italic mb-4">
+            «Vi har en skråningstomt i Bergen på ca 1400 m² hvor den gamle klipperen stadig kjørte seg fast i vått gress. FjordTrim Alpine 4x4 har gått knirkefritt hele sesongen. En helt ny verden å slippe kantledning!»
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+          <div class="w-9 h-9 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">
+            EH
+          </div>
+          <div>
+            <div class="text-xs font-bold text-slate-900">Eirik H.</div>
+            <div class="text-[10px] text-slate-500">Bergen • Kjøpte FjordTrim Alpine 4x4</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
+          <p class="text-xs text-slate-700 leading-relaxed italic mb-4">
+            «Bestilte på mandag formiddag og pakken ankom med Posten på døren på torsdag. Klipperen var i gang på 20 minutter. Appen er intuitiv og den klipper så stille at verken vi eller naboen merker den på kveldstid.»
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+          <div class="w-9 h-9 rounded-full bg-blue-100 text-blue-800 font-bold flex items-center justify-center text-xs">
+            MS
+          </div>
+          <div>
+            <div class="text-xs font-bold text-slate-900">Marianne S.</div>
+            <div class="text-[10px] text-slate-500">Bærum • Kjøpte AeroLawn Matrix 1200</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex text-amber-400 text-sm mb-3">★★★★★</div>
+          <p class="text-xs text-slate-700 leading-relaxed italic mb-4">
+            «Har to golden retrievere som stadig glemmer baller og leker på plenen. SylvaBot Stealth ser lekene med LiDAR-laseren og svinger pent unna hver eneste gang. Utrolig fornøyd med kjøpstryggheten og servicen.»
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+          <div class="w-9 h-9 rounded-full bg-purple-100 text-purple-800 font-bold flex items-center justify-center text-xs">
+            TL
+          </div>
+          <div>
+            <div class="text-xs font-bold text-slate-900">Trond L.</div>
+            <div class="text-[10px] text-slate-500">Trondheim • Kjøpte SylvaBot Stealth 800</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FREQUENTLY ASKED QUESTIONS (FAQ) -->
+  <section id="faq" class="py-16 bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-full">
+          Spørsmål & Svar
+        </span>
+        <h2 class="font-display font-black text-2xl sm:text-3xl text-slate-900 mt-2">
+          Alt du lurer på om kjøp og levering
+        </h2>
+      </div>
+
+      <div class="space-y-3">
+        <!-- Q1 -->
+        <details class="bg-white p-4 rounded-xl border border-slate-200 group" open>
+          <summary class="font-bold text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between">
+            <span>Hvor rask er standard leveringstid i Norge?</span>
+            <span class="text-emerald-600 font-bold group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+            Vår standard leveringstid er <strong>2–4 virkedager</strong> over hele fastlands-Norge. Ordrene sendes med Posten / Bring direkte fra vårt sentrallager i Oslo. Du mottar automatisk sporingsnummer på SMS og e-post så snart forsendelsen er registrert.
+          </div>
+        </details>
+
+        <!-- Q2 -->
+        <details class="bg-white p-4 rounded-xl border border-slate-200 group">
+          <summary class="font-bold text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between">
+            <span>Hvordan fungerer kablefri RTK-satellittnavigasjon?</span>
+            <span class="text-emerald-600 font-bold group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+            Med RTK (Real-Time Kinematic) og AI-syn slipper du å grave ned grensekabel i hagen. En liten referanseantenne kommuniserer med satellitter og gir klipperen en centimeters presisjon. Du tegner grensene for plenen, forbudssoner (som blomsterbed) og gangstier rett i mobilappen.
+          </div>
+        </details>
+
+        <!-- Q3 -->
+        <details class="bg-white p-4 rounded-xl border border-slate-200 group">
+          <summary class="font-bold text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between">
+            <span>Hvilke betalingsmetoder tilbyr dere?</span>
+            <span class="text-emerald-600 font-bold group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+            Vi tilbyr Norges mest populære og trygge betalingsløsninger: <strong>Vipps</strong> (rask betaling med mobil), <strong>Klarna</strong> (få varen først – betal om 30 dager eller delbetaling) og vanlige betalingskort (Visa og Mastercard). Alle priser er oppgitt i NOK inklusive 25% norsk merverdiavgift (MVA).
+          </div>
+        </details>
+
+        <!-- Q4 -->
+        <details class="bg-white p-4 rounded-xl border border-slate-200 group">
+          <summary class="font-bold text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between">
+            <span>Hva gjør jeg om vinteren med robotklipperen?</span>
+            <span class="text-emerald-600 font-bold group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+            Når nattefrosten setter inn på senhøsten, anbefaler vi å rengjøre klipperen og oppbevare både klipper og ladestasjon frostfritt i bod eller garasje. Batteriet bør lades til ca 70% før vinterlagring.
+          </div>
+        </details>
+
+        <!-- Q5 -->
+        <details class="bg-white p-4 rounded-xl border border-slate-200 group">
+          <summary class="font-bold text-sm text-slate-900 cursor-pointer list-none flex items-center justify-between">
+            <span>Hva dekker den 3-årige garantien?</span>
+            <span class="text-emerald-600 font-bold group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+            Vår 3 års garanti dekker alle fabrikasjonsfeil på motorer, kretskort, batteri, sensorer og ladestasjon. I tillegg følger vi selvfølgelig den norske Forbrukerkjøpsloven med 5 års reklamasjonsrett på varer ment å vare vesentlig lenger enn 2 år.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FOOTER WITH NORWEGIAN COMPANY INFORMATION -->
+  <footer id="kontakt" class="bg-nordic-900 text-white pt-16 pb-12 border-t border-emerald-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-emerald-950/80">
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-black text-lg">
+              ⚡
+            </div>
+            <span class="font-display font-black text-xl text-white">NORDIC<span class="text-emerald-400">MOW</span> NORGE</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed max-w-sm">
+            Norges spesialist på autonome, stillegående og kablefrie robotgressklippere. Bygget for tøff norsk natur, kystregn og bratte skråninger.
+          </p>
+          
+          <div class="text-xs text-slate-300 space-y-1 pt-2">
+            <div><strong>Foretak:</strong> NordicMow Norge AS</div>
+            <div><strong>Organisasjonsnummer:</strong> NO 928 471 635 MVA</div>
+            <div><strong>Adresse:</strong> Storgata 32, 0184 Oslo, Norge</div>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4">Navigasjon</h4>
+          <ul class="text-xs text-slate-300 space-y-2.5">
+            <li><a href="#modeller" class="hover:text-emerald-300 transition-colors">Alle 10 Robotklippere</a></li>
+            <li><a href="#advisor" class="hover:text-emerald-300 transition-colors">Plen-Kalkulator</a></li>
+            <li><a href="#fordeler" class="hover:text-emerald-300 transition-colors">Nordisk Teknologi</a></li>
+            <li><a href="#anmeldelser" class="hover:text-emerald-300 transition-colors">Kundeerfaringer</a></li>
+            <li><a href="#faq" class="hover:text-emerald-300 transition-colors">Spørsmål og Svar</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Kundeservice & Frakt -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4">Norsk Kundeservice</h4>
+          <ul class="text-xs text-slate-300 space-y-2.5">
+            <li class="flex items-center gap-2">
+              <span>📞</span>
+              <span class="font-semibold text-white">+47 21 00 45 60</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>✉️</span>
+              <span>kontakt@nordicmow.no</span>
+            </li>
+            <li class="pt-1 text-slate-400">
+              Man – Fre: 08:30 – 16:30<br>
+              Lør – Søn: Stengt
+            </li>
+            <li class="pt-2 text-emerald-400 font-semibold">
+              Posten / Bring Standard (2–4 dg)
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Kjøpstrygghet -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4">Kjøpstrygghet</h4>
+          <ul class="text-xs text-slate-300 space-y-2">
+            <li>✓ 3 års full fabrikkgaranti</li>
+            <li>✓ 30 dagers åpent kjøp</li>
+            <li>✓ Trygg betaling med Vipps & Klarna</li>
+            <li>✓ Norsk forbrukerkjøpslov</li>
+            <li>✓ Lagerført i Oslo</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Payment & Copyright Row -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <div>
+          © 2026 NordicMow Norge AS. Alle rettigheter reservert. Priser oppgitt i NOK inkl. 25% mva.
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-1 bg-slate-800 rounded font-bold text-[11px] text-orange-400 border border-slate-700">VIPPS</span>
+          <span class="px-2.5 py-1 bg-slate-800 rounded font-bold text-[11px] text-pink-400 border border-slate-700">KLARNA</span>
+          <span class="px-2.5 py-1 bg-slate-800 rounded font-bold text-[11px] text-blue-400 border border-slate-700">VISA</span>
+          <span class="px-2.5 py-1 bg-slate-800 rounded font-bold text-[11px] text-red-400 border border-slate-700">MASTERCARD</span>
+          <span class="px-2.5 py-1 bg-slate-800 rounded font-bold text-[11px] text-emerald-400 border border-slate-700">POSTEN</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 10. SLIDE-OVER CART DRAWER -->
+  <div id="cart-overlay" onclick="toggleCart(false)" class="cart-drawer-overlay fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity"></div>
+  
+  <div id="cart-drawer" class="cart-drawer-panel fixed top-0 right-0 bottom-0 w-full max-w-md bg-white z-50 shadow-2xl flex flex-col justify-between translate-x-full border-l border-slate-200">
+    <!-- Drawer Header -->
+    <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <h3 class="font-bold text-base text-slate-900">Handlekurv</h3>
+      </div>
+      <button onclick="toggleCart(false)" class="p-2 hover:bg-slate-200 rounded-lg text-slate-500 hover:text-slate-900 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Items List -->
+    <div id="cart-items-container" class="p-5 flex-1 overflow-y-auto space-y-3">
+      <!-- Injected by app.js -->
+    </div>
+
+    <!-- Drawer Footer / Checkout -->
+    <div class="p-5 border-t border-slate-200 bg-slate-50 space-y-3">
+      <div class="space-y-1.5 text-xs text-slate-600">
+        <div class="flex justify-between">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal" class="font-bold text-slate-900">0 kr</span>
+        </div>
+        <div class="flex justify-between">
+          <span>Standard levering (Posten/Bring):</span>
+          <span id="cart-delivery-cost" class="font-bold text-emerald-700">Gratis</span>
+        </div>
+        <div class="flex justify-between text-slate-400 text-[11px]">
+          <span>Herav 25% merverdiavgift (MVA):</span>
+          <span>Inkludert</span>
+        </div>
+        <div class="flex justify-between text-sm font-extrabold text-slate-900 pt-2 border-t border-slate-200">
+          <span>Totalt å betale:</span>
+          <span id="cart-total" class="text-base text-emerald-700">0 kr</span>
+        </div>
+      </div>
+
+      <button onclick="openCheckout()" class="w-full btn-accent py-3.5 text-xs font-bold tracking-wide uppercase shadow-lg">
+        Gå til kassen →
+      </button>
+
+      <div class="flex items-center justify-center gap-4 text-[11px] text-slate-400 pt-1">
+        <span>🔒 256-bit SSL kryptering</span>
+        <span>🇳🇴 Norsk garanti</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. QUICK VIEW / PRODUCT DETAILS MODAL -->
+  <div id="product-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 relative modal-enter">
+      <button onclick="closeQuickView()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-700 transition-colors">
+        ✕
+      </button>
+      <div id="product-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- 12. CHECKOUT MODAL (NORWEGIAN PAYMENT & ADDRESS) -->
+  <div id="checkout-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full max-h-[95vh] overflow-y-auto shadow-2xl border border-slate-200 relative modal-enter p-6 sm:p-8">
+      <button onclick="closeCheckout()" class="absolute top-4 right-4 w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-700 text-xs font-bold">
+        ✕
+      </button>
+
+      <div class="mb-6">
+        <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+          Sikker Utsjekk
+        </span>
+        <h3 class="text-xl font-extrabold text-slate-900 mt-1">Fullfør bestillingen</h3>
+        <p class="text-xs text-slate-500">Standard levering til din adresse i Norge med Posten / Bring.</p>
+      </div>
+
+      <form id="checkout-form" class="space-y-4">
+        <!-- Contact -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Fullt navn *</label>
+          <input type="text" name="name" required placeholder="F.eks. Ola Nordmann" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">E-postadresse *</label>
+            <input type="email" name="email" required placeholder="ola.nordmann@example.no" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Mobiltelefon (for sporings-SMS) *</label>
+            <input type="tel" name="phone" required placeholder="+47 912 34 567" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Gateadresse *</label>
+          <input type="text" name="address" required placeholder="F.eks. Storgata 12" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Postnummer *</label>
+            <input type="text" name="postal" required placeholder="0184" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Poststed *</label>
+            <input type="text" name="city" required placeholder="Oslo" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+        </div>
+
+        <!-- Shipping method -->
+        <div class="p-3.5 bg-emerald-50/70 border border-emerald-200 rounded-xl text-xs text-emerald-900 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+            <div>
+              <span class="font-bold">Standard levering: 2–4 virkedager</span>
+              <div class="text-[10px] text-emerald-700">Sendes trygt med Posten / Bring sporingspakke</div>
+            </div>
+          </div>
+          <span class="font-bold text-emerald-800">Inkludert</span>
+        </div>
+
+        <!-- Payment selector -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-2">Velg betalingsmåte</label>
+          <div class="grid grid-cols-3 gap-2 text-xs">
+            <label class="border border-emerald-500 bg-emerald-50/50 p-2.5 rounded-xl text-center cursor-pointer flex flex-col items-center justify-center">
+              <input type="radio" name="payment" value="vipps" checked class="hidden">
+              <span class="font-black text-orange-600 text-sm">Vipps</span>
+              <span class="text-[10px] text-slate-500">Rask mobilbetaling</span>
+            </label>
+            <label class="border border-slate-200 hover:border-slate-400 p-2.5 rounded-xl text-center cursor-pointer flex flex-col items-center justify-center">
+              <input type="radio" name="payment" value="klarna" class="hidden">
+              <span class="font-black text-pink-600 text-sm">Klarna</span>
+              <span class="text-[10px] text-slate-500">Faktura / Del opp</span>
+            </label>
+            <label class="border border-slate-200 hover:border-slate-400 p-2.5 rounded-xl text-center cursor-pointer flex flex-col items-center justify-center">
+              <input type="radio" name="payment" value="card" class="hidden">
+              <span class="font-black text-slate-800 text-sm">Kort</span>
+              <span class="text-[10px] text-slate-500">Visa / Mastercard</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="pt-3">
+          <button type="submit" class="w-full btn-accent py-3.5 text-xs font-bold tracking-wide uppercase shadow-lg">
+            Bekreft og Betal (<span id="checkout-total-display">0 kr</span>)
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 13. ORDER CONFIRMATION MODAL -->
+  <div id="order-confirmation-modal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center shadow-2xl border border-slate-200 modal-enter">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+        ✓
+      </div>
+      <h3 class="text-2xl font-black text-slate-900 mb-1">Tusen takk for bestillingen!</h3>
+      <p class="text-xs text-slate-500 mb-6">Ordrebekreftelse og kvittering er sendt til din e-postadresse.</p>
+
+      <div id="order-summary-details" class="mb-6"></div>
+
+      <button onclick="closeOrderConfirmation()" class="btn-primary w-full py-3.5 text-xs font-bold">
+        Fortsett å handle hos NordicMow
+      </button>
+    </div>
+  </div>
+
+  <!-- 14. TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-nordic-900 text-white border border-emerald-500/40 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+      <span class="text-emerald-400 font-bold">✓</span>
+      <span id="toast-msg" class="text-xs font-medium"></span>
+    </div>
+  </div>
+
+  <!-- JavaScript Application -->
+  <script src="app.js"></script>
+</body>
+</html>
